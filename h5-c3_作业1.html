@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.c1{
+				position: relative;
+				padding-left: 650px;
+				top: 30px;
+				font-size: 30px;
+			}
+			.c2{
+				position: relative;
+				padding-left: 530px;
+				top: 10px;
+				
+			}
+			.c3{
+				position: relative;
+				width: 300px;
+				height: 40px;
+			}
+			.c4{
+				position: relative;
+				width: 300px;
+				height: 40px;
+			}
+			.c5{
+				position: relative;
+				width: 200px;
+				height: 40px;
+			}
+			.c6{
+				position: relative;
+				width: 100px;
+				height: 40px;
+				background: #19AAF5;
+				border-radius: 5px;
+				left: 205px;
+				bottom: 40px;
+			}
+			.c7{
+				position: relative;
+				width: 300px;
+				height: 40px;
+				bottom: 18px;
+			}
+			.c8{
+				position: relative;
+				width: 300px;
+				height: 40px;
+				bottom: 18px;
+			}
+			.c9{
+				position: absolute;
+				left: 590px;
+				font-size: 12px;
+			}
+			.c10{
+				position: absolute;
+				font-size: 12px;
+				left: 570px;
+				top: 550px;
+			}
+			.c11{
+				position: absolute;
+				left: 890px;
+				top: 133px;
+				width: 330px;
+				height: 30px;
+				background:#FFC0CB;
+				display: none;
+			}
+			.c12{
+				position: absolute;
+				left: 890px;
+				top: 190px;
+				width: 100px;
+				height: 30px;
+				background:#FFC0CB;
+				display: none;
+			}
+			.c13{
+				position: absolute;
+				left: 890px;
+				top: 133px;
+				width: 80px;
+				height: 30px;
+				background:#FFC0CB;
+				display: none;
+			}
+			.c14{
+				position: absolute;
+				left: 890px;
+				top: 190px;
+				width: 150px;
+				height: 30px;
+				background:#FFC0CB;
+				display: none;
+			}
+			.c15{
+				position: absolute;
+				left: 890px;
+				top: 320px;
+				width: 300px;
+				height: 30px;
+				/*display: none;*/
+			}
+			.c16{
+				position: absolute;
+				left: 890px;
+				top: 380px;
+				width: 100px;
+				height: 30px;
+				background:#FFC0CB;
+				display: none;
+			}
+			.c17{
+				position: absolute;
+				left: 890px;
+				top: 380px;
+				width: 70px;
+				height: 30px;
+				background:#FFC0CB;
+				display: none;
+			}
+			
+			ul li{
+				list-style: none;
+			}
+			.a1{
+				position: relative;
+				top: -32px;
+				left: 3px;
+				padding-top: 10px;
+				padding-bottom: 8px;
+				color: #999999;
+			}
+			.a2{
+				position: relative;
+				top: -32px;
+				left: 3px;
+				padding-top: 10px;
+				padding-bottom: 8px;
+				color: #999999;
+			}
+			.a3{
+				position: relative;
+				top: -32px;
+				left: 3px;
+				padding-top: 10px;
+				padding-bottom: 8px;
+				color: #999999;
+			}
+			.a4{
+				position: relative;
+				top: -32px;
+				left: 3px;
+				padding-top: 10px;
+				padding-bottom: 8px;
+				color: #999999;
+			}
+			.a5{
+				position: relative;
+				top: -32px;
+				left: 3px;
+				padding-top: 10px;
+				padding-bottom: 8px;
+				color: #999999;
+			}
+			.a6{
+				position: absolute;
+				width: 200px;
+				height: 50px;
+				background: red;
+				border-radius: 5px;
+				left: 620px;
+				top: 470px;
+				color: white;
+			}
+			.b1{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: #6495ED;
+			}
+			.pOver{
+				border: 1px solid gainsboro;
+			}
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("input[name='username']").click(function(){
+					$(".a1").animate({"left":"-60px"},300);
+					$(".c3").addClass('pOver');
+					var user = $('#user1').val();
+				});
+				$("#user1").blur(function(){
+					var user = $("#user1").val();
+					var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]{4,20}$/;
+					if(user == ""){
+						$(".c13").fadeOut(100);
+						$(".c11").fadeIn(500);
+					}else if(!reg.test(user)){
+						$(".c11").fadeOut(100);
+						$(".c13").fadeIn(500);
+					}else{
+						$(".c13").fadeOut(500);
+						$(".c11").fadeOut(500);
+					}
+				});
+				$("input[name='number']").click(function(){
+					$(".a2").animate({"left":"-70px"},300);
+					$(".c4").addClass('pOver');
+				});
+				$("#num1").blur(function(){
+					var num = $("#num1").val();
+					var reg1 = /^[1][3,4,5,7,8][0-9]{9}$/;
+					if(num ==""){
+						$(".c14").fadeOut(100);
+						$(".c12").fadeIn(500);
+					}else if(!reg1.test(num)){
+						$(".c12").fadeOut(100);
+						$(".c14").fadeIn(500);
+					}else{
+						$(".c14").fadeOut(500);
+						$(".c12").fadeOut(500);
+					}
+					
+				});
+				$("input[name='yanzheng']").click(function(){
+					$(".a3").animate({"left":"-60px"},300);
+					$(".c5").addClass('pOver');
+				});
+				$("input[name='password']").click(function(){
+					$(".a4").animate({"left":"-70px"},300);
+					$(".c7").addClass('pOver');
+				});
+				$("#pass1").blur(function(){
+					var pass = $("#pass1").val();
+					var reg2 = /^([a-zA-Z]){6,16}$|^(\d){6,16}$|^((?=[\x21-\x7e]+)[^A-Za-z0-9]){6,16}$|^(?!\2+$)(?!\1+$)[\2\1]{6,7}$|^(?!\3+$)(?!\1+$)[\3\1]{6,7}$|^(?!\3+$)(?!\2+$)[\2\3]{6,7}$|^(?=.*\3)(?=.*\1)(?=.*\2)[a-zA-Z\x21-\x7e\d]{6,7}$/;
+					var reg3 = /^(?!\d+$)(?![a-zA-Z]+$)[\dA-Za-z]{8,16}$/;
+  		  		    var reg4 = /^(?=.*((?=[\x21-\x7e]+)[^A-Za-z0-9]))(?=.*[a-zA-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{8,13}$/;
+					if(pass ==""){
+						$(".c15").html("密码不能为空");
+					}else if(reg2.test(pass)){
+						$(".c15").html("密码简单");
+					}else if(reg3.test(pass)){
+						$(".c15").html("密码中等");
+					}else if(reg4.test(pass)){
+						$(".c15").html("密码强");
+					}else if(!reg2.test(pass) || !reg3.test(pass) || !reg4.test(pass)){
+						$(".c15").html("请输入6-20字符，数字或英文");
+					}else{
+
+					}
+				});
+				$("input[name='password1']").click(function(){
+					$(".a5").animate({"left":"-70px"},300);
+					$(".c8").addClass('pOver');
+				});
+				$("#pass2").blur(function(){
+					var pass0 = $("#pass2").val();
+					if(pass0 ==""){
+						$(".c17").fadeOut(100);
+						$(".c16").fadeIn(500);
+					}else if(!($("#pass1").val() == $("#pass2").val())){
+						$(".c16").fadeOut(100);
+						$(".c17").fadeIn(500);
+					}else{
+						$(".c17").fadeOut(100);
+						$(".c16").fadeOut(100);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h4 class="c1">1号店注册</h4>
+		<form>
+		<div class="c2">
+			<ul>
+				<li>
+					<div class="c3">
+					<input id="user1" type="text" name="username" style="width:300px; height: 40px; border: 0px solid white; "/>
+					<span class="a1">用户名</span>
+					</div>
+				</li>
+				<br />
+				<li>
+					<div class="c4">
+					<input id="num1" type="text" name="number" style="width:300px; height: 40px; border: 0px solid white;"/>
+					<span class="a2">手机号码</span>
+					</div>
+				</li>
+				<br />
+				<li>
+					<div class="c5">
+					<input  type="text" name="yanzheng" style="width:200px; height: 40px; border: 0px solid white;"/>
+					<span class="a3">验证码</span>
+					</div>
+					<input type="button" name="id1" class="c6" value="获取验证码"/>
+				</li>
+				<li>
+					<div class="c7">
+					<input id="pass1" type="password" name="password" style="width:300px; height: 40px;border: 0px solid white; "/>
+					<span class="a4">设置密码</span>
+					</div>
+				</li>
+				<br />
+				<li>
+					<div class="c8">
+					<input id="pass2" type="password" name="password1" style="width:300px; height: 40px; border: 0px solid white;"/>
+					<span class="a5">确认密码</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		  <span class="c9">点击注册，表示您同意1号店 <a href="#">《服务协议及隐私声明》</a></span>
+		  <input type="submit" name="tijiao" class="a6" value="同意并注册" />
+		  <span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;沪ICP备16050468号 | 沪B2-20170039 | 营业执照<br/>Copyright © 1号店网上超市 2007-2017，All Rights Reserved</span>
+		</form>
+			<div class="c11">
+				<span style="font-size: 12px;">账户不能为空，请输入4-20字符，包括英文数字中文字符_</span>
+			</div>
+			<div class="c13">
+				<span style="font-size: 12px;">账户格式不对</span>
+			</div>
+			<div class="c12">
+				<span style="font-size: 12px;">请输入手机号码</span>
+			</div>
+			<div class="c14">
+				<span style="font-size: 12px;">请输入正确格式的手机号码</span>
+			</div>
+			<div class="c15">
+				<span style="font-size: 12px;"></span>
+			</div>
+			<div class="c16">
+				<span style="font-size: 12px;">确认密码不能为空</span>
+			</div>
+			<div class="c17">
+				<span style="font-size: 12px;">密码不一致</span>
+			</div>
+	</body>
+</html>

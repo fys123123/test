@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/官网子网页2.css" type="text/css"/>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var t = $('#h1'); //获取到文本域对象
+				t.css("color","#A9A9A9"); //设置文本域的样式
+				t.val("请输入关键字"); //设置默认显示文字
+				var default_value = t.val(); //把默认显示的文字赋给一个变量
+				
+				t.focus(function() {  //当鼠标点击文本域时修改文本域的样式，判断文本域内的文字是否等于默认值，如果等于就把文本域内设空
+					t.css("color","black");
+					if (t.val() == default_value) {
+						t.val('');
+					}
+				});
+ 
+				t.blur(function() { //当文本域失去鼠标焦点时判断文本域中的值是否为空，如果为空就把文本域的值设置为默认显示的文字并修改样式
+					t.css("color","black");
+					if (t.val() == '') {
+						t.val(default_value);
+						t.css("color","#A9A9A9");
+					}
+				});
+				$("#a1").click(function(){
+					$(".news_text5").fadeIn(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".conceal_1").fadeIn(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+				});
+				$("#a2").click(function(){
+					$(".news_text6").fadeIn(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".conceal_2").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+				});
+				$("#a3").click(function(){
+					$(".news_text7").fadeIn(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".conceal_3").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+				});
+				$("#a4").click(function(){
+					$(".news_text8").fadeIn(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".conceal_4").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+				});
+				
+				$(".pimg").click(function(){
+			var _this = $(this);//将当前的pimg元素作为_this传入函数
+			imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
+		});
+			
+				$(".pimg1").click(function(){
+			var _this = $(this);
+			imgShow1("#outerdiv1", "#innerdiv1", "#bigimg1", _this);
+		});
+			});
+			
+			function imgShow(outerdiv, innerdiv, bigimg, _this){
+	var src = _this.attr("src");//获取当前点击的pimg元素中的src属性
+	$(bigimg).attr("src", src);//设置#bigimg元素的src属性
+ 
+        /*获取当前点击图片的真实大小，并显示弹出层及大图*/
+	$("<img/>").attr("src", src).load(function(){
+		var windowW = $(window).width();//获取当前窗口宽度
+		var windowH = $(window).height();//获取当前窗口高度
+		var realWidth = this.width;//获取图片真实宽度
+		var realHeight = this.height;//获取图片真实高度
+		var imgWidth, imgHeight;
+		var scale = 0.9;//缩放尺寸，当图片真实宽度和高度大于窗口宽度和高度时进行缩放
+		
+		if(realHeight>windowH*scale) {//判断图片高度
+			imgHeight = windowH*scale;//如大于窗口高度，图片高度进行缩放
+			imgWidth = imgHeight/realHeight*realWidth;//等比例缩放宽度
+			if(imgWidth>windowW*scale) {//如宽度扔大于窗口宽度
+				imgWidth = windowW*scale;//再对宽度进行缩放
+			}
+		} else if(realWidth>windowW*scale) {//如图片高度合适，判断图片宽度
+			imgWidth = windowW*scale;//如大于窗口宽度，图片宽度进行缩放
+                        imgHeight = imgWidth/realWidth*realHeight;//等比例缩放高度
+		} else {//如果图片真实高度和宽度都符合要求，高宽不变
+			imgWidth = realWidth;
+			imgHeight = realHeight;
+		}
+                $(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放
+		
+		var w = (windowW-imgWidth)/2;//计算图片与窗口左边距
+		var h = (windowH-imgHeight)/2;//计算图片与窗口上边距
+		$(innerdiv).css({"top":h, "left":w});//设置#innerdiv的top和left属性
+		$(outerdiv).fadeIn("fast");//淡入显示#outerdiv及.pimg
+	});
+	
+	$(outerdiv).click(function(){//再次点击淡出消失弹出层
+		$(this).fadeOut("fast");
+	});
+}
+			
+				function imgShow1(outerdiv1, innerdiv1, bigimg1, _this){
+	var src = _this.attr("src");
+	$(bigimg1).attr("src", src);
+ 
+	$("<img/>").attr("src", src).load(function(){
+		var windowW = $(window).width();
+		var windowH = $(window).height();
+		var realWidth = this.width;
+		var realHeight = this.height;
+		var imgWidth, imgHeight;
+		var scale = 0.9;
+		
+		if(realHeight>windowH*scale) {
+			imgHeight = windowH*scale;
+			imgWidth = imgHeight/realHeight*realWidth;//等比例缩放宽度
+			if(imgWidth>windowW*scale) {
+				imgWidth = windowW*scale;
+			}
+		} else if(realWidth>windowW*scale) {
+			imgWidth = windowW*scale;
+                        imgHeight = imgWidth/realWidth*realHeight;//等比例缩放高度
+		} else {
+			imgWidth = realWidth;
+			imgHeight = realHeight;
+		}
+                $(bigimg1).css("width",imgWidth);
+		
+		var w = (windowW-imgWidth)/2;//计算图片与窗口左边距
+		var h = (windowH-imgHeight)/2;//计算图片与窗口上边距
+		$(innerdiv1).css({"top":h, "left":w});
+		$(outerdiv1).fadeIn("fast");
+	});
+	
+	$(outerdiv1).click(function(){
+		$(this).fadeOut("fast");
+	});
+}
+		</script>
+	</head>
+	<body style="margin: 0;">
+		<div>
+		<div class="roof">
+			<img src="img/1.gif" class="roof_img1"/>
+			<img src="img/神恩颂歌.jpg"  class="navigation_img1"/>
+			<span style="color: #19AAF5;" class="roof_text1">为世界上<br />&nbsp;&nbsp;&nbsp;&nbsp;所有的美好而战</span>
+			<ul class="roof_text2">
+				<a href="1网页制作登录.html"><li>用户登录</li></a>
+				<a href="1网页制作注册.html"><li>账号注册</li></a>
+				<li style="color: red;">米哈游游戏目录
+				</li>
+				<li>安卓充值</li>
+			</ul>
+		</div>
+		<img src="img/星空.jpg" class="starry_1"/><img src="img/星空.jpg" class="starry_2"/><img src="img/星空.jpg" class="starry_3"/>
+		<div class="news">
+			<img  src="img/线条1.PNG" class="news_img1"/>
+			<img  src="img/线条2.PNG" class="news_img2"/>
+			<span class="news_text1">下载中心</span>
+			<ul class="news_text2">
+				<li id="a1"><span>壁纸下载</span></li>
+				<li id="a2"><span>火爆视频</span></li>
+				<li id="a3"><span>同人绘画</span></li>
+				<li id="a4"><span>表情包</span></li>
+			</ul>
+			<input type="text" value="" class="news_text3" style="width: 150px; height: 20px;" id="h1"/>
+			<img src="img/搜索图标.PNG" class="news_img3" />
+			<div class="news_text4"></div>
+			<div class="news_text5"></div><div class="news_text6"></div><div class="news_text7"></div>
+			<div class="news_text8"></div>
+			<div class="conceal_1">
+			<div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.6);z-index:2;
+				width:100%;height:100%;display:none;"><div id="innerdiv" style="position:absolute;">
+				<img id="bigimg" style="border: none;" src="" /></div></div>	
+				<ul class="ensconce_2" id="imglist">
+					<li><img src="img/wallpaper1.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper2.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper3.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper4.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper5.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper6.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper7.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper8.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper9.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper10.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper11.PNG" class="pimg"/></li>
+					<li><img src="img/wallpaper12.PNG" class="pimg"/></li>
+				</ul>
+			</div>
+			<div class="conceal_2">
+				<ul class="ensconce_3">
+					<li><img src="img/play_1.gif"/></li>
+					<li><img src="img/play_2.gif"/></li>
+					<li><img src="img/play_3.gif"/></li>
+					<li><img src="img/play_4.gif"/></li>
+					<li><img src="img/play_5.gif"/></li>
+					<li><img src="img/play_6.gif"/></li>
+					<li><img src="img/play_7.gif"/></li>
+					<li><img src="img/play_8.gif"/></li>
+					<li><img src="img/play_9.gif"/></li>
+					<li><img src="img/play_10.gif"/></li>
+				</ul>
+				<ul class="ensconce_4">
+					<li><span>舞蹈MMD</span></li>
+					<li><span>舞蹈MMD</span></li>
+					<li><span>琪亚娜宣传片</span></li>
+					<li><span>德丽莎宣传片</span></li>
+					<li><span>八重樱宣传片</span></li>
+					<li><span>舞蹈MMD</span></li>
+					<li><span>舞蹈MMD</span></li>
+					<li><span>布洛妮娅宣传片</span></li>
+					<li><span>舞蹈MMD</span></li>
+					<li><span>舞蹈MMD</span></li>
+				</ul>
+				<ul class="ensconce_5">
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+					<li><img src="img/三角形1.gif"/></li>
+				</ul>
+					<span class="ensconce_text1">1/20</span>
+			</div>
+			<div class="conceal_3">
+				<div id="outerdiv1" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;
+				width:100%;height:100%;display:none;"><div id="innerdiv1" style="position:absolute; ">
+				<img id="bigimg1" style="border:none" src="" /></div></div>
+				<ul class="ensconce_6">
+					<li><a href=""><span style="color: white;">贴吧Id：月下De猫</span></a></li>
+					<li><a href=""><span style="color: white;">贴吧ID：霜の鎄傷ゞ</span></a></li>
+					<li><a href=""><span style="color: white;">贴吧ID:丿彷徨丶未来丨</span></a></li>
+					<li><a href=""><span style="color: white;">贴吧ID：豆瓣酱大</span></a></li>
+					<li><a href=""><span style="color: white;">贴吧ID：童明达33</span></a></li>
+					<li><a href=""><span style="color: white;">P站ID:59949366</span></a></li>
+					<li><a href=""><span style="color: white;">P站ID:63150757</span></a></li>
+					<li><a href=""><span style="color: white;">P站ID:63150757</span></a></li>
+					<li><a href=""><span style="color: white;">P站ID:11008221</span></a></li>
+					<li><a href=""><span style="color: white;">P站ID:11008221</span></a></li>
+				</ul>
+				<ul class="ensconce_7" id="imglist1">
+					<li><img src="img/play_11.gif" class="pimg1"/></li>
+					<li><img src="img/play_12.gif" class="pimg1"/></li>
+					<li><img src="img/play_13.gif" class="pimg1"/></li>
+					<li><img src="img/play_14.gif" class="pimg1"/></li>
+					<li><img src="img/play_15.gif" class="pimg1"/></li>
+					<li><img src="img/play_16.gif" class="pimg1"/></li>
+					<li><img src="img/play_17.gif" class="pimg1"/></li>
+					<li><img src="img/play_18.gif" class="pimg1"/></li>
+					<li><img src="img/play_19.gif" class="pimg1"/></li>
+					<li><img src="img/play_20.gif" class="pimg1"/></li>
+				</ul>
+					<span class="ensconce_text2">1/20</span>
+			</div>
+			<div class="conceal_4">
+				<span>敬<br />请<br />期<br />待</span>
+			</div>
+			<div class="news_top">
+				<ul>
+				<li>▍健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</li><br />
+				<li>▍用户协议： 米哈游游戏使用许可及服务协议   米哈游用户个人信息及隐私保护政策   交易纠纷处理   家长监护工程   防沉迷系统   自律公约</li><br />
+				<li>▍适龄提示： 本游戏适合17岁（含）以上玩家娱乐</li><br />
+				<li>沪ICP备14042301号-2 沪网文〔2017〕8193-607号 文网游备字〔2016〕Ｍ-CSG 1244 号</li><br />
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;沪公网安备31010402001116号</li><br />
+				<li>2014-2018 All Rights Reserved 米哈游科技（上海） 有限公司版权所有 </li><br />
+				<li>地址：上海市徐汇区宜山路700号C4栋5层   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前台电话：86-021-60331122. </li><br />
+				<li>官方客服电话：021-34203305 （工作时间：每天10点 - 20点）.</li><br />
+				<li>投诉电话：021-34203135  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：tousu@mihoyo.com</li>
+			</ul>
+			<img src="img1/police.gif" class="top_img1" />
+			<img src="img/police2.png" class="top_img2" />
+			<span class="top_text1"><a href="">联系方式  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				加入我们  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				免责条款  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a></span>
+			</div>
+			</div>
+		<ul class="navigation_text1">
+				<a href="1网页首页.html"><li><span>&nbsp;&nbsp;&nbsp;首页</span></li></a>
+				<a href="1网页子网页1.html"><li><span>作战资讯</span></li></a>
+				<li><span><a href="#">游戏特色</a></span></li>
+				<li style="background: #CCCCCC;"><span><a href="#">下载中心</a></span></li>
+				<li><span><a href="#">周边商城</a></span></li>
+				<li><span><a href="#">我的账户</a></span></li>
+			</ul>
+		</div>
+	</body>
+</html>

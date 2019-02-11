@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+.div1 {
+position: relative;
+}
+
+.div1:after {
+content: '';
+display: block;
+/* after 和 before 必须content:''; display:block */
+width: 30px;
+height: 30px;
+box-shadow: 0 2px 15px 0 rgba(0,0,0,0.10);
+transform: rotate(90deg);
+}
+
+
+.div1:before {
+position: absolute;
+z-index: 2;
+content: '';
+display: block;
+background: #fff;
+width: 42px;
+height: 42px;
+top: -27px;
+left: -6px;
+}
+		</style>
+	</head>
+	<body>
+		<div class="div1"></div>
+	</body>
+</html>

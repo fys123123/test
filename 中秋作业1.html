@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		.shijiao{
+			display: none;
+		}
+		.shijiao1{
+			
+		}
+		.help1{
+			
+			font-size: 20px;
+			position: absolute;
+			left:20px;
+			top: 18px;
+			color: red;
+		}
+		.help2{
+		position: absolute;
+		left: 110px;
+		top: 22px;
+		}
+		.help3{
+			position: absolute;
+			left: 275px;
+			top: 22px;
+			background: red;
+			color: white;
+		}
+		
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+	    <script type="text/javascript">
+	    	$(function(){
+	    		$("#sp1").click(function(){
+					$(".o1").toggle();
+				})
+				$("#sp2").click(function(){
+					$(".o2").toggle();
+				})
+				$("#sp3").click(function(){
+					$(".o3").toggle(); 
+				})
+				$("#sp4").click(function(){
+					$(".o4").toggle();
+				})
+				$("#sp5").click(function(){
+					$(".o5").toggle();
+				})
+				$("#sp6").click(function(){
+					$(".o6").toggle();
+				})
+				$("#sp7").click(function(){
+					$(".o7").toggle();
+				})
+				var t = $('#h1'); //获取到文本域对象
+				t.css("color","#A9A9A9"); //设置文本域的样式
+				t.val("请输入关键字"); //设置默认显示文字
+				var default_value = t.val(); //把默认显示的文字赋给一个变量
+				
+				t.focus(function() {  //当鼠标点击文本域时修改文本域的样式，判断文本域内的文字是否等于默认值，如果等于就把文本域内设空
+					t.css("color","black");
+					if (t.val() == default_value) {
+						t.val('');
+					}
+				});
+ 
+				t.blur(function() { //当文本域失去鼠标焦点时判断文本域中的值是否为空，如果为空就把文本域的值设置为默认显示的文字并修改样式
+					t.css("color","black");
+					if (t.val() == '') {
+						t.val(default_value);
+						t.css("color","#A9A9A9");
+					}
+				}); 
+				$("#x1").click(function(){
+					$("#div1").show();
+				});
+				$("#x2").click(function(){
+					$("#div1").hide();
+				})
+				$("#x2").click(function(){
+					$("#div2").show();
+				});
+				$("#x1").click(function(){
+					$("#div2").hide();
+				});
+				});
+			
+	    </script>
+	</head>
+	<body>
+		
+		<div style="width: 500px; height: 50px; background: gainsboro;">
+			<div class="help1">帮助中心</div>
+			<div class="help2"><input type="help" id="h1" value=""/></div>
+			<!--<div class="help4" id="h2">请输入要查询的关键字</div>-->
+			<div><button class="help3" >帮助搜索</button></div>
+		</div>
+					<ul><span id="sp1"style="font-size: 20px;"><span style="color: red;">∨</span>账户管理</span>
+				<li style="display: none;" class="o1">账户注册</li>
+				<li style="display: none;" class="o1">密码找回</li>
+				<li style="display: none;" class="o1">用户常见问题</li>
+</ul>
+					<ul><span id="sp2" style="font-size: 20px;"><span style="color: red;">∨</span>购物指南</span>
+				<li style="display: none;" class="o2">服务条款</li>
+				<li style="display: none;" class="o2">购物流程</li>
+				<li style="display: none;" class="o2">会员制度</li>
+				<li style="display: none;" class="o2">积分计划</li>
+				<li style="display: none;" class="o2">取消订单</li>
+				<li style="display: none;" class="o2">常见问题</li>
+</ul> 
+					<ul><span id="sp3" style="font-size: 20px;"><span style="color: red;">∨</span>配送方式</span>
+				<li class="o3"><span style="color: red;">国内配送</span></li>
+				<li class="o3">订单拆分</li>
+				<li class="o3">商品验货与签收</li>
+				<li class="o3">配送常见问题</li>
+</ul>
+					<ul><span id="sp4" style="font-size: 20px;"><span style="color: red;">∨</span>支付方式</span>
+				<li style="display: none;" class="o4">再现支付</li>
+				<li style="display: none;" class="o4">VANCL优惠券</li>
+				<li style="display: none;" class="o4">虚拟账户支付</li>
+				<li style="display: none;" class="o4">发票制度</li>
+				<li style="display: none;" class="o4">支付常见问题</li>
+</ul>
+					<ul><span id="sp5" style="font-size: 20px;"><span style="color: red;">∨</span>售后服务</span>
+				<li style="display: none;" class="o5">退货政策</li>
+				<li style="display: none;" class="o5">退货办理流程</li>
+				<li style="display: none;" class="o5">退货网上办理</li>
+				<li style="display: none;" class="o5">退货说明</li>
+				<li style="display: none;" class="o5">韩国购规则</li>
+				<li style="display: none;" class="o5">售后常见问题</li>
+</ul>
+					<ul><span id="sp6" style="font-size: 20px;"><span style="color: red;">∨</span>手机凡客</span>
+				<li style="display: none;" class="o6">凡客WNP站</li>
+				<li style="display: none;" class="o6">客户端安装</li>
+				<li style="display: none;" class="o6">客户端功能</li>
+				<li style="display: none;" class="o6">查看物流状态</li>
+				<li style="display: none;" class="o6">凡客WVP常见问题</li>
+</ul>
+					<ul><span id="sp7" style="font-size: 20px;"><span style="color: red;">∨</span>网站联盟</span>
+				<li style="display: none;" class="o7">凡客网站联盟</li>
+				<li style="display: none;" class="o7">如何加盟</li>
+</ul>
+
+		
+		<span style="color: red;">这条帮助是否解决了您的问题？</span><br />
+		<div class="sideBar">
+		 <input type="radio" name="sex" class="active" id="x1" checked="checked"/>已解决
+		 <input type="radio" name="sex"  id="x2"/>未解决
+		</div>
+		 	<div id="div1" style="display: none;">
+		 	 <span>问题没有解决？请选择原因：</span><br />
+		 	 <select>
+					 	 <option>文字太多，阅读困难</option>
+					 	 <option>无法解释</option>
+					 	 <option>无法解释</option>
+					</select>
+					</div>
+					<div id="div2" style="display: none;">
+		 	 <span>请选择原因：</span><br />
+		 	 <select>
+					 	 <option>阅读困难</option>
+					 	 <option>无法解释</option>
+					 	 <option>无法解释</option>
+					</select>
+					</div>
+					<div ><button>提交</button></div> 
+		 </div>
+	</body>
+</html>
