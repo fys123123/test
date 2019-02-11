@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window对象的属性测试</title>
+<script type="text/javascript">
+		var i=100;
+		var t=setInterval("jishi()",1000);
+		function jishi(){ 
+			i--;
+			if(i==0){
+				window.location.href="首页.html"; 
+				clearInterval(t); 
+			}
+			document.getElementById("time").innerHTML=i;			
+		}
+</script>
+</head>
+<body>
+登陆成功，<span id="time" style="background:grey;color:red;width:40px;height:60;font-size:60px">3</span>秒后将自动跳转倒首页
+如果您不想等待，请点<a href="首页.html">这里</a>
+</body>
+</html>

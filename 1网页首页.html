@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>《崩坏三》为世界所有的美好而战</title>
+		<link rel="stylesheet" href="css/官网首页.css" type="text/css"/>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".c1").hover(function(){
+					$(".roof_text3 dt").slideToggle(200);
+				},function(){
+					$(".roof_text3 dt").slideToggle(200);
+				});
+				$(".navigation_img2").click(function(){
+					$(".navigation_text2").fadeIn(200);
+				})
+				$(".navigation_img1").click(function(){
+					$(".navigation_text2").fadeOut(200);
+				});
+				 var i = 0;
+   var imgWidth = $(".news_text6 ul li").width();
+   
+   var clone = $(".news_text6 ul li").first().clone();
+   $(".news_text6 ul").append(clone);
+   //复制第一张图片并且添加到最后达到无缝连接的效果
+   
+   var size = $(".news_text6 ul li").size();//得到所有li的个数
+   
+   
+   /*第一步*/
+   //一开始循环添加按钮
+   for(var j = 0 ; j<size - 1 ; j++){
+     $("#controler").append("<div></div>");   
+       
+   }
+   //为什么要size - 1？因为最后一张图片只是作一个过渡效果我们显示的始终还是4张图片
+  //所以添加按钮的时候我们也应该添加4个按钮
+   $("#controler div").eq(0).addClass("onclick");
+   
+   
+   
+   
+   /*第二步*/
+   //左按钮
+   $("#button-left").click(function(){
+      Toleft();
+      
+   })
+   
+   
+   //右按钮
+   $("#button-right").click(function(){
+      Toright();
+      
+   })
+   
+  
+  
+  
+  
+  
+   /*第3步*/
+   //按钮移出移入事件
+   $("#controler div").hover(function(){
+    i = $(this).index();  
+    clearInterval(timer);
+    $(".news_text6 ul").stop().animate({left:-i * imgWidth});
+    $(this).addClass("onclick").siblings().removeClass("onclick");
+    $("#index").html("index的值：" + index);
+    
+    
+    
+   },function(){
+     timer = setInterval(function(){
+     Toleft();    
+       
+   },3000)    
+        
+   })      
+   
+   
+   //ul鼠标移出移入事件
+   $(".news_text6 ul").hover(function(){
+     clearInterval(timer);
+     
+   },function(){
+      timer = setInterval(function(){
+     Toleft();    
+       
+   },3000)     
+       
+   })
+   
+   //两个方向按钮鼠标移出移入事件
+   $("#button-left,#button-right").mouseover(function(){
+       clearInterval(timer);
+       
+   }).mouseout(function(){
+     timer = setInterval(function(){
+        Toleft();    
+       
+     },3000)    
+   })
+   
+
+   //定时器
+   var timer = setInterval(function(){
+     Toleft();    
+       
+   },3000)   
+   
+   
+   
+   
+   /*第2.1步*/
+   //左按钮实现的函数
+   function Toleft(){
+       
+     i++;
+     if(i==size){
+        //当当前图片为最后一张图片的时候（我们一开始复制并且添加到ul最后面的图片）并且再点击了一次左按钮，这时候我们就利用css的快速转换效果把ul移动第一张图片的位置并且第二张图片滑入达到无缝效果（css的变换效果很快我们肉眼是很难看见的）
+        $(".news_text6 ul").css({left:0});
+        i = 1;     
+     }
+     $(".news_text6 ul").stop().animate({left:-i*imgWidth},1000);
+     
+     if(i == size -1){
+        $("#controler div").eq(0).addClass("onclick").siblings().removeClass("onclick"); 
+           
+     }else{
+       $("#controler div").eq(i).addClass("onclick").siblings().removeClass("onclick");      
+           
+    }
+       
+     
+     
+     
+   }
+   
+   
+   /*第2.2步*/
+   //右按钮实现的函数
+   function Toright(){
+       
+       //同理，如果当前图片位置是第一张图片我再按一下右按钮那么我们也利用css的快速变换使它的位置来到最后一张图片的位置（size-1），并且让倒数第二张图片滑动进来
+      i--;
+      if(i==-1){
+         $(".news_text6 ul").css({left:-(size - 1)*imgWidth});
+         i=size-2;    
+          
+      }   
+      $(".news_text6 ul").animate({left:-i*imgWidth},1000);  
+      $("#controler div").eq(i).addClass("onclick").siblings().removeClass("onclick"); 
+       
+   }
+			});
+		</script>
+	</head>
+	<body style="margin: 0;">
+		<div>
+		<div class="roof">
+			<img src="img/1.gif" class="roof_img1"/>
+			<img src="img/img5.jpg"  class="navigation_img1"/>
+			<span style="color: #19AAF5;" class="roof_text1">为世界上<br />&nbsp;&nbsp;&nbsp;&nbsp;所有的美好而战</span>
+			<ul class="roof_text2">
+				<a href="1网页制作登录.html"><li>用户登录</li></a>
+				<a href="1网页制作注册.html"><li>账号注册</li></a>
+				<li style="color: red;"class="c1">米哈游游戏目录
+				</li>
+				<li>安卓充值</li>
+			</ul>
+		</div>
+		<div class="navigation">
+			<img src="img/3.gif" class="navigation_img2"/>
+			<div class="navigation_text2" style="display: none;">
+					<div class="navigation_text3"><span style="font-size: 22px; color: #00A0E9;">◆ 关注崩坏三官方微信</span></div>
+					<div class="navigation_img3"><img src="img/4.gif"/></div>
+					<div class="navigation_text4"><span style="font-size: 22px; color: #00A0E9;">◆关注崩坏三官方贴吧</span></div>
+					<div class="navigation_img4"><img src="img/index.png"/></div>
+					<div class="navigation_text5"><span style="font-size: 22px; color: #00A0E9;">◆官方客服电话<br/><span style="font-size: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;021-34203305<br/></span><span style="font-size: 10px; color: gray">工作时间:每天10点 - 20点</span></span></div>
+					<div class="navigation_img5"><img src="img/index1.png"/></div>
+					<div class="navigation_text6"><span style="font-size: 22px; color: #00A0E9;">◆勾搭客服娘<br/>QQ:800189596<br/><span style="font-size: 10px; color: gray">E-mail： bh3kefu@mihoyo.com</span></span></div>
+			</div>
+		</div>
+		<img src="img/星空.jpg" class="transmit_img1" />
+			<img src="img/text1.gif" class="transmit_img2" />
+			<img src="img/琪亚娜.gif"  class="backstory"/>
+			<img src="img/text2.gif"  class="backstory_text1"/>
+			<img src="img/符华.jpg"  class="news_img1"/>
+		<div class="figure">
+			<img src="img/5.gif"  class="figure_img1"/>
+			<div class="figure_text1">
+			<span> Kiana &nbsp;&nbsp;&nbsp;Kaslana</span><br />
+			<span style="font-size: 20px; color: red;">琪亚娜·卡斯兰娜</span>
+			</div>
+			<div class="figure_img2">
+			<ul>
+				<li><img src="img/6.gif"/></li>
+				<li><img src="img/7.gif"/></li>
+				<li><img src="img/8.gif"/></li>
+				<li><img src="img/9.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text2">
+				<ul>
+					<li>女武神·游侠</li>
+					<li>领域装·白练</li>
+					<li>圣女祈祷</li>
+					<li>白骑士·月光</li>
+				</ul>
+			</div>
+			<div class="figure_line1"></div>
+			<div class="figure_text3">
+			<span> Raiden &nbsp;&nbsp;&nbsp;Mei</span><br />
+			<span style="font-size: 20px; color: red;">雷电·芽衣</span>
+			</div>
+			<div class="figure_img3">
+			<ul>
+				<li><img src="img/10.gif"/></li>
+				<li><img src="img/11.gif"/></li>
+				<li><img src="img/12.gif"/></li>
+				<li><img src="img/13.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text4">
+				<ul>
+					<li>脉冲装·绯红</li>
+					<li>女武神·强袭</li>
+					<li>影舞冲击</li>
+					<li>雷电女王的鬼铠</li>
+				</ul>
+			</div>
+			<div class="figure_line2"></div>
+			<div class="figure_text5">
+			<span>   Murata &nbsp;&nbsp;&nbsp;Himeko</span><br />
+			<span style="font-size: 20px; color: red;">无量塔·姬子</span>
+			</div>
+			<div class="figure_img4">
+			<ul>
+				<li><img src="img/14.gif"/></li>
+				<li><img src="img/15.gif"/></li>
+				<li><img src="img/16.gif"/></li>
+				<li><img src="img/17.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text6">
+				<ul>
+					<li>战场疾风</li>
+					<li>融核装·深红</li>
+					<li>女武神·凯旋</li>
+					<li>血色玫瑰</li>
+				</ul>
+			</div>
+			<div class="figure_line3"></div>
+			<div class="figure_text7">
+			<span>   Bronya &nbsp;&nbsp;&nbsp;Zaychik</span><br />
+			<span style="font-size: 20px; color: red;">布洛妮娅·扎伊切克</span>
+			</div>
+			<div class="figure_img5">
+			<ul>
+				<li><img src="img/18.gif"/></li>
+				<li><img src="img/19.gif"/></li>
+				<li><img src="img/20.gif"/></li>
+				<li><img src="img/21.gif"/></li>
+				<li><img src="img/22.gif"/></li>
+				<li><img src="img/23.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text8">
+				<ul>
+					<li>女武神·战车</li>
+					<li>驱动装·山吹</li>
+					<li>雪地狙击</li>
+				</ul>
+			</div>
+			<div class="figure_text9">
+				<ul>
+					<li>银狼的黎明</li>
+					<li>异度黑核侵蚀</li>
+				</ul>
+			</div>
+			<div class="figure_text10">次元边界突破</div>
+			<div class="figure_line4"></div>
+			<div class="figure_text11">
+			<span>   Theresa &nbsp;&nbsp;&nbsp;Apocalypse</span><br />
+			<span style="font-size: 20px; color: red;">德丽莎·阿波卡利斯</span>
+			</div>
+			<div class="figure_img6">
+			<ul>
+				<li><img src="img/24.gif"/></li>
+				<li><img src="img/25.gif"/></li>
+				<li><img src="img/26.gif"/></li>
+				<li><img src="img/27.gif"/></li>
+				<li><img src="img/28.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text12">
+				<ul>
+					<li>女武神·誓约</li>
+					<li>处刑装·紫苑</li>
+					<li>樱火轮舞</li>
+				</ul>
+			</div>
+			<div class="figure_text13">
+				<ul>
+					<li>月下初拥</li>
+				</ul>
+			</div>
+			<div class="figure_text14">神恩颂歌</div>
+			<div class="figure_line5"></div>
+			<div class="figure_text15">
+			<span>   Fu &nbsp;Hua</span><br />
+			<span style="font-size: 20px; color: red;">符华</span>
+			</div>
+			<div class="figure_img7">
+			<ul>
+				<li><img src="img/29.gif"/></li>
+				<li><img src="img/30.gif"/></li>
+				<li><img src="img/31.gif"/></li>
+				<li><img src="img/32.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text16">
+				<ul>
+					<li>女武神·迅羽</li>
+					<li>影骑士·月轮</li>
+					<li>炽翎</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;白夜执事</li>
+				</ul>
+			</div>
+			<div class="figure_line6"></div>
+			<div class="figure_text17">
+			<span>   Yae&nbsp;&nbsp;Sakura</span><br />
+			<span style="font-size: 20px; color: red;">八重樱</span>
+			</div>
+			<div class="figure_img8">
+			<ul>
+				<li><img src="img/33.gif"/></li>
+				<li><img src="img/34.gif"/></li>
+				<li><img src="img/35.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text18">
+				<ul>
+					<li>逆神巫女</li>
+					<li>御神装·勿忘</li>
+					<li>真炎幸魂</li>
+				</ul>
+			</div>
+			<div class="figure_line7"></div>
+			<div class="figure_text19">
+			<span>   Kallen&nbsp;&nbsp;Kaslana</span><br />
+			<span style="font-size: 20px; color: red;">卡莲·卡斯兰娜</span>
+			</div>
+			<div class="figure_img9">
+			<ul>
+				<li><img src="img/36.gif"/></li>
+				<li><img src="img/37.gif"/></li>
+				<li><img src="img/38.gif"/></li>
+			</ul>
+			</div>
+			<div class="figure_text20">
+				<ul>
+					<li>圣仪装·今样</li>
+					<li>第六夜想曲</li>
+					<li>原罪猎人</li>
+				</ul>
+			</div>
+		</div>
+		<div class="video">	
+			<div class="transmit_img3"><img src="img/video1.PNG" /></div>
+			<div class="transmit_img4"><img src="img/video2.PNG" /></div>
+			<div class="transmit_img5"><img src="img/video3.PNG" /></div>
+			<span class="transmit_text1"><a href="1网页子网页2.html">更多视频 >></a></span>
+			<div class="backstory_1"></div>
+			<ul class="backstory_text2">
+					<li>世界的「崩坏」，是一种周期性会发生的灾难现象。
+							<ul>
+								<li>每隔几百年的时间，就会出现一次。</li>
+								<li>崩坏的表现形式难以捉摸，战争、传染病、气候灾难、彗星撞击等等。</li>
+								<li>按照典籍的解释，只能说是不可臆测的神之意志。但是从结果来看，一定会带来世界主宰物种的大量灭绝。</li>
+								<li>最近的一次崩坏是14世纪的黑死病，直接或者间接造成了全球1/3人口的毁灭。</li>
+							</ul>					
+					</li>
+					<li>悲剧的开端死士
+							<ul>
+								<li>西历2014年，在极东之地的一角，第三次崩坏初潮悄然降临。</li>
+								<li>由被感染的人类变异而成的「死士」成为了这一次崩坏的具体灾难形式。</li>
+								<li>身边的人莫名其妙的失去心智，低级者会像丧尸一样撕咬人类，高级者则像获得了异能一般，拥有不可思议的能力。</li>
+								<li>但是不论怎样，它们，都只为毁灭而存在。</li>
+							</ul>
+					</li>
+					<li>人类的希望女武神
+							<ul>
+								<li>针对这次崩坏，联合国建立了圣弗雷亚学园来对抗。</li>
+								<li>圣弗雷亚学园中的「女武神」部队是当前唯一能与「死士」战斗的有效手段。</li>
+								<li>从千羽学园的崩坏中逃离而出的琪亚娜、芽衣、布洛尼娅一行人，加入了圣弗雷亚学园并成为了「女武神」中的一员。</li>
+								<li>西历2016年，在无量塔姬子少佐的指挥下，琪亚娜一行开始了对抗崩坏死士的战斗。</li>
+							</ul>
+					</li>
+					<li>历史的再现圣痕
+							<ul>
+								<li>在悠久的历史中，曾有「崩坏抗体」以百万分之一的概率出现在少女们的体内。</li>
+								<li>抗体还会在其中的极少数的少女身上构建特殊的纹路——「圣痕」。</li>
+								<li>拥有「圣痕」的少女获得了控制「崩坏」的力量，在历史上与崩坏抗衡。</li>
+								<li>在现代，人类制造出了「人工抗体」，并制造出了「人工圣痕」，来大幅强化「女武神」的力量。</li>
+								<li>然而，由于缺少历史英魂们的「圣痕」真迹，「人工圣痕」并不完整，也会带来巨大的副作用。</li>
+								<li>即便如此，少女们依然坚持接受了英魂的力量，一同迎接末世的战役。</li>
+							</ul>
+					</li>
+			</ul>
+			<span class="news_img2">重燃<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ver2.6</span>
+				<div class="news_text1">
+					<img src="img/苹果.png" />
+				</div>
+				<div class="news_text2">
+					<img src="img/安卓.png" />
+				</div>
+				<div class="news_text3">
+					<img src="img/二维码.png" />
+				</div>
+				<div class="news_text4"></div>
+				<span class="news_text5">模<br />拟<br />器<br />下<br />载</span>
+				<div class="news_text6">
+     			<ul>
+			       <li><a href="#"><img src="img/news_1.png"></a></li>
+			       <li><a href="#"><img src="img/news_2.png"></a></li>
+			       <li><a href="#"><img src="img/news_3.png"></a></li>
+			       <li><a href="#"><img src="img/news_4.png"></a></li> 
+			     </ul>      
+			    <div id="controler"></div>
+				</div>
+				<div class="news_text7">
+			   		<ul class="news_text8">
+			   			<li>[新闻 ] cosplay作品征集活动开始！ </li>
+			   			<li>[新闻 ] 舰团战beta版第二期战斗即将开始</li>
+			   			<li>[新闻 ] 本期精准目标:仿犹大·血之拥抱</li>
+			   			<li>[新闻 ] 万圣节专属补给开启！</li>
+			   			<li>[新闻 ] 游戏内就能联系客服娘啦~</li>
+			   			<li>[公告 ] 封号名单(2018-10-17)</li>
+			   		</ul>
+			   		<ul class="news_text9">
+			   			<li>2018-10-21</li>
+			   			<li>2018-10-21</li>
+			   			<li>2018-10-18</li>
+			   			<li>2018-10-18</li>
+			   			<li>2018-10-18</li>
+			   			<li>2018-10-17</li>
+			   		</ul>
+			   		<span><a href="1网页子网页1.html">+MORE</a></span>
+		</div>
+		</div>
+		<img src="img/video_1.gif" class="news_img3"/>
+		<div class="top_1">
+			<ul>
+				<li>▍健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</li><br />
+				<li>▍用户协议： 米哈游游戏使用许可及服务协议   米哈游用户个人信息及隐私保护政策   交易纠纷处理   家长监护工程   防沉迷系统   自律公约</li><br />
+				<li>▍适龄提示： 本游戏适合17岁（含）以上玩家娱乐</li><br />
+				<li>沪ICP备14042301号-2 沪网文〔2017〕8193-607号 文网游备字〔2016〕Ｍ-CSG 1244 号</li><br />
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;沪公网安备31010402001116号</li><br />
+				<li>2014-2018 All Rights Reserved 米哈游科技（上海） 有限公司版权所有 </li><br />
+				<li>地址：上海市徐汇区宜山路700号C4栋5层   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前台电话：86-021-60331122. </li><br />
+				<li>官方客服电话：021-34203305 （工作时间：每天10点 - 20点）.</li><br />
+				<li>投诉电话：021-34203135  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：tousu@mihoyo.com</li>
+			</ul>
+			<img src="img1/police.gif" class="top_img1" />
+			<img src="img/police2.png" class="top_img2" />
+			<span class="top_text1"><a href="">联系方式  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				加入我们  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				免责条款  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a></span>
+		</div>
+		<ul class="navigation_text1">
+				<li style="background: #CCCCCC;"><span>&nbsp;&nbsp;&nbsp;首页</span></li>
+				<a href="1网页子网页1.html"><li><span>作战资讯</span></li></a>
+				<li><span><a href="#">游戏特色</a></span></li>
+				<a href="1网页子网页2.html"><li><span>下载中心</span></li></a>
+				<li><span><a href="#">周边商城</a></span></li>
+				<li><span><a href="#">我的账户</a></span></li>
+			</ul>
+		</div>
+	</body>
+</html>

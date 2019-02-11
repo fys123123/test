@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/h5-c3_1.css" type="text/css"/>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#a1").hover(function(){
+					$(".headline li").slideToggle(150);
+					$(".redundant").slideToggle(150);
+				},function(){
+					$(".headline li").slideToggle(150);
+					$(".redundant").slideToggle(150);
+				});
+				$("#a2").hover(function(){
+					$(".headline_1 li").slideToggle(150);
+					$(".redundant1").slideToggle(150);
+				},function(){
+					$(".headline_1 li").slideToggle(150);
+					$(".redundant1").slideToggle(150);
+				});
+				$("#a3").hover(function(){
+					$(".headline_2 li").slideToggle(150);
+					$(".redundant2").slideToggle(150);
+				},function(){
+					$(".headline_2 li").slideToggle(150);
+					$(".redundant2").slideToggle(150);
+				});
+				$("#a4").hover(function(){
+					$(".headline_3 li").slideToggle(150);
+					$(".redundant3").slideToggle(150);
+				},function(){
+					$(".headline_3 li").slideToggle(150);
+					$(".redundant3").slideToggle(150);
+				});
+				$("#a5").hover(function(){
+					$(".headline_4 li").slideToggle(150);
+					$(".redundant4").slideToggle(150);
+				},function(){
+					$(".headline_4 li").slideToggle(150);
+					$(".redundant4").slideToggle(150);
+				});
+				$("#a6").hover(function(){
+					$(".headline_5 li").slideToggle(150);
+					$(".redundant5").slideToggle(150);
+				},function(){
+					$(".headline_5 li").slideToggle(150);
+					$(".redundant5").slideToggle(150);
+				});
+				$("#a7").hover(function(){
+					$(".headline_6 li").slideToggle(150);
+					$(".redundant6").slideToggle(150);
+				},function(){
+					$(".headline_6 li").slideToggle(150);
+					$(".redundant6").slideToggle(150);
+				});
+				$('.one').hover(function(){
+				    $(this).addClass('invoking'); 
+				  },function(){
+				    $(this).removeClass('invoking');
+				   });
+				   $("#show-area").hover(function(){
+				   	 $("#button-left").fadeIn(200);
+				   	 $("#button-right").fadeIn(200);
+				   },function(){
+				   	$("#button-left").fadeOut(200);
+				   	$("#button-right").fadeOut(200);
+				   });
+				   $(".test li:gt(0)").mousemove(function(){
+				   	$("#a0").css("background"," #E64346");
+				   });   
+				   $(".test>ul>li").mouseout(function(){
+				   	$(".test>ul>li:first").css("background","#8f000b");
+				   });	   
+				   $(".news_marquee1").hover(function(){
+				   	$(".news_text_1").css("color","red");
+				   	$(".news_text_2").css("color","#DCDCDC")
+				   	$(".news_line1_1").show();
+				   },function(){
+				   	$(".news_text_1").css("color","");
+				   	$(".news_text_2").css("color","")
+				   	$(".news_line1_1").hide();
+				   });	   
+				   $(".news_marquee2").hover(function(){
+				   	$(".news_text_3").css("color","red");
+				   	$(".news_text_4").css("color","#DCDCDC")
+				   	$(".news_line2_2").show();
+				   },function(){
+				   	$(".news_text_3").css("color","");
+				   	$(".news_text_4").css("color","")
+				   	$(".news_line2_2").hide();
+				   });  
+				    $(".news_marquee3").hover(function(){
+				   	$(".news_text_5").css("color","red");
+				   	$(".news_text_6").css("color","#DCDCDC")
+				   	$(".news_line3_3").show();
+				   },function(){
+				   	$(".news_text_5").css("color","");
+				   	$(".news_text_6").css("color","")
+				   	$(".news_line3_3").hide();
+				   });	   
+				   $(".news_marquee4").hover(function(){
+				   	$(".news_text_7").css("color","red");
+				   	$(".news_text_8").css("color","#DCDCDC")
+				   	$(".news_line4_4").show();
+				   },function(){
+				   	$(".news_text_7").css("color","");
+				   	$(".news_text_8").css("color","")
+				   	$(".news_line4_4").hide();
+				   });			   
+				  	
+				   var i = 0;
+				   var imgWidth = $("#show-area ul li").width();   
+				   var clone = $("#show-area ul li").first().clone();
+				   $("#show-area ul").append(clone);
+				   //复制第一张图片并且添加到最后达到无缝连接的效果  
+				   var size = $("#show-area ul li").size();//得到所有li的个数    
+				   /*第一步*/
+				   //一开始循环添加按钮
+				   for(var j = 0 ; j<size - 1 ; j++){
+				     $("#controler").append("<div></div>");        
+				   }
+				   //为什么要size - 1？因为最后一张图片只是作一个过渡效果我们显示的始终还是4张图片
+				  //所以添加按钮的时候我们也应该添加4个按钮
+				   $("#controler div").eq(0).addClass("onclick");   
+				   /*第二步*/
+				   //左按钮
+				   $("#button-left").click(function(){
+				      Toleft();   
+				   }) 
+				   //右按钮
+				   $("#button-right").click(function(){
+				      Toright();    
+				   }) 
+				   /*第3步*/
+				   //按钮移出移入事件
+				   $("#controler div").hover(function(){
+				    i = $(this).index();  
+				    clearInterval(timer);
+				    $("#show-area ul").stop().animate({left:-i * imgWidth});
+				    $(this).addClass("onclick").siblings().removeClass("onclick");
+				    $("#index").html("index的值：" + index); 
+				   },function(){
+				     timer = setInterval(function(){
+				     Toleft();       
+				   },3000)         
+				   })       
+				   //ul鼠标移出移入事件
+				   $("#show-area ul").hover(function(){
+				     clearInterval(timer);
+				   },function(){
+				      timer = setInterval(function(){
+				     Toleft();    			      
+				   },3000)     				       
+				   })				   
+				   //两个方向按钮鼠标移出移入事件
+				   $("#button-left,#button-right").mouseover(function(){
+				       clearInterval(timer);				       
+				   }).mouseout(function(){
+				     timer = setInterval(function(){
+				        Toleft();    				       
+				     },3000)    
+				   })				   			
+				   //定时器
+				   var timer = setInterval(function(){
+				     Toleft();    				       
+				   },3000)   				   
+				   /*第2.1步*/
+				   //左按钮实现的函数
+				   function Toleft(){ 
+				     i++;
+				     if(i==size){
+				        //当当前图片为最后一张图片的时候（我们一开始复制并且添加到ul最后面的图片）并且再点击了一次左按钮，这时候我们就利用css的快速转换效果把ul移动第一张图片的位置并且第二张图片滑入达到无缝效果（css的变换效果很快我们肉眼是很难看见的）
+				        $("#show-area ul").css({left:0});
+				        i = 1;     
+				     }
+				     $("#show-area ul").stop().animate({left:-i*imgWidth},1000);
+				     if(i == size -1){
+				        $("#controler div").eq(0).addClass("onclick").siblings().removeClass("onclick");         
+				     }else{
+				       $("#controler div").eq(i).addClass("onclick").siblings().removeClass("onclick");                
+				    }          
+				   }     
+				   /*第2.2步*/
+				   //右按钮实现的函数
+				   function Toright(){       
+				       //同理，如果当前图片位置是第一张图片我再按一下右按钮那么我们也利用css的快速变换使它的位置来到最后一张图片的位置（size-1），并且让倒数第二张图片滑动进来
+				      i--;
+				      if(i==-1){
+				         $("#show-area ul").css({left:-(size - 1)*imgWidth});
+				         i=size-2;            
+				      }   
+				      $("#show-area ul").animate({left:-i*imgWidth},1000);  
+				      $("#controler div").eq(i).addClass("onclick").siblings().removeClass("onclick");      
+				   }
+			});
+		</script>
+	</head>
+	<body>
+		<div class="entirety">
+			<div class="head">
+				<img src="img1/jietu_1.PNG"  class="img1"/>
+			<div class="roof"></div>
+			<div class="roof_1">
+				<span>广东南方职业培训学院欢迎您的光临！</span>
+			</div>
+			<div class="roof_2">
+				<span><a href="#">成绩查询</a>  &nbsp; <a href="#">预定学位</a> &nbsp; <a href="#">学生管理系统</a> &nbsp; <a href="#">OA管理系统</a></span>
+			</div>
+				<div id="wrapper">
+			 <div id="show-area">
+		 <ul>
+       <li><a href="#"><img src="img1/20180620094648_75088.jpg"></a></li>
+       <li><a href="#"><img src="img1/20180620094717_71524.jpg"></a></li>
+       <li><a href="#"><img src="img1/20180620155328_39322.jpg"></a></li>
+       <li><a href="#"><img src="img1/20180621104529_22923.jpg"></a></li>
+     </ul>
+       <div id="button-left" title="下一张"></div>
+      <div id="button-right" title="上一张"></div>
+    <div id="controler"></div><!--控制按钮,为了日后方便后台操作这里的控制按钮在js代码中控制添加-->
+     </div>
+     </div>
+     			<div class="redundant"></div>
+			<div class="redundant1"></div>
+			<div class="redundant2"></div>
+			<div class="redundant3"></div>
+			<div class="redundant4"></div>
+			<div class="redundant5"></div>
+			<div class="redundant6"></div>
+			<div class="roof_3">
+			<div class="test">
+			<ul>
+			<li id="a0" class="q1"><a>网站首页</a></li>
+			<li id="a1" class="q1"><a>初识南方</a>
+				<ul class="headline">
+					<li style="display: none;" class="one"><span>学院介绍</span></li>
+					<li style="display: none;" class="one" ><span>院长寄语</span></li>
+					<li style="display: none;" class="one"><span>南方特色</span></li>
+					<li style="display: none;" class="one" ><span>荣誉殿堂</span></li>
+					<li style="display: none;" class="one" ><span>环境设施</span></li>
+					<li style="display: none;" class="one" ><span>校园视频</span></li>
+				</ul>
+			</li>
+			<li id="a2" class="q1"><a>南方专业</a>
+				<ul class="headline_1">
+					<li style="display: none;" class="one"><span>专业设置</span></li>
+					<li style="display: none;" class="one"><span>学历文凭</span></li>
+					<li style="display: none;" class="one"><span>学生作品</span></li>
+				</ul>
+			</li>
+			<li id="a3" class="q1"><a>南方动态</a>
+				<ul class="headline_2">
+					<li style="display: none;" class="one"><span>学院要闻</span></li>
+					<li style="display: none;" class="one"><span>行业新闻</span></li>
+					<li style="display: none;" class="one"><span>媒体聚焦</span></li>
+				</ul>
+			</li>
+			<li id="a4" class="q1"><a>南方师资</a>
+				<ul class="headline_3">
+					<li style="display: none;" class="one"><span>师资团队</span></li>
+					<li style="display: none;" class="one"><span>名师风采</span></li>
+				</ul>
+			</li>
+			<li id="a5" class="q1"><a>南方生活</a>
+				<ul class="headline_4">
+					<li style="display: none;" class="one"><span>社团介绍</span></li>
+					<li style="display: none;" class="one"><span>社团新闻</span></li>
+					<li style="display: none;" class="one"><span>校园活动</span></li>
+				</ul>
+			</li>
+			<li id="a6" class="q1"><a>南方就业</a>
+				<ul class="headline_5">
+					<li style="display: none;" class="one"><span>杰出校友</span></li>
+					<li style="display: none;" class="one"><span>校企合作</span></li>
+					<li style="display: none;" class="one"><span>就业快讯</span></li>
+					<li style="display: none;" class="one"><span>就业服务</span></li>
+					<li style="display: none;" class="one"><span>校友会</span></li>
+				</ul>
+			</li>
+			<li id="a7" class="q1"><a>入学南方</a>
+				<ul class="headline_6">
+					<li style="display: none;" class="one"><span>优惠政策</span></li>
+					<li style="display: none;" class="one"><span>报到须知</span></li>
+					<li style="display: none;" class="one"><span>常见问题</span></li>
+					<li style="display: none;" class="one"><span>联系我们</span></li>
+				</ul>
+			</li>
+			</ul>
+		</div>
+			</div>
+			</div>
+	 </div>
+			</div>
+			<div class="professional">
+				<span>专业设置</span>
+				<div class="line_1"></div><div class="line_2"></div><div class="line_3"></div><div class="line_4"></div>
+  				<div class="text_1">更多专业》》</div>			
+  				<div class="marquee_1">
+  					<ul>
+  						<li><img src="img1/index.jpg" /></li>
+  						<li><img src="img1/index1.jpg" /></li>
+  						<li><img src="img1/index3.jpg" /></li>
+  						<li><img src="img1/index4.jpg" /></li>
+  						<li><img src="img1/index5.jpg" /></li>
+  						<li><img src="img1/index6.jpg" /></li>
+  						<li><img src="img1/index7.jpg" /></li>
+  						<li><img src="img1/index8.jpg" /></li>
+  						<li><img src="img1/index9.jpg" /></li>
+  						<li><img src="img1/index10.jpg" /></li>
+  						<li><img src="img1/index11.jpg" /></li>
+  						<li><img src="img1/index12.jpg" /></li>
+  						<li><img src="img1/index13.jpg" /></li>
+  						<li><img src="img1/index14.jpg" /></li>
+  						<li><img src="img1/index15.jpg" /></li>
+  					</ul>
+  				</div>
+			</div>
+			<div class="news">
+				<span class="text_3">南方新闻动态</span>
+				<div class="line_5"></div><div class="line_6"></div><div class="line_7"></div><div class="line_8"></div>
+  				<div class="text_2">更多动态》》</div>
+  				<div class="news_marquee1">
+  					<div class="news_line1"></div>
+  					<div class="news_line1_1"></div>
+  					 <div class="news_text_1">学院要闻</div>
+  					 <div class="news_text_2">College news</div>
+  				</div>
+  				<img src="img1/news_1.jpg" class="news_img1"/><span id="sp1">看南方IT新生这样过“七夕” 淬火锤炼铿锵</span>
+  				<div class="news_marquee5">
+  				<dl>
+  					<div class="dotted_1"></div><br />
+  					<dt>「新生动力营」军训书写特色大学生活新彩章</dt>
+  					<dt style="opacity: 0.4;">南方IT学院2018级新生动力营以一周的军训拉</dt>
+  					<div class="dotted_2"></div>
+  					<dt> &nbsp;</dt>
+  					<dt>【开学典礼】2018软件工程系新生动力营</dt>
+  					<dt style="opacity: 0.4;">新的学期，开启新的希望，承载新的梦想</dt>
+  					<div class="dotted_3"></div>
+  					<dt>&nbsp;</dt>
+  					<dt>「围观」你看你看，幸福的脸！</dt>
+  					<dt style="opacity: 0.4;">有种幸福叫付出，幸福需要靠努力来获得</dt>
+  				</dl>
+  				</div>
+  				<div class="news_marquee6">
+  				<dl>
+  					<div class="dotted_4"></div><br />
+  					<dt>【必看】无人机专业并不止是学操控 你还要知道这</dt>
+  					<dt style="opacity: 0.4;">无人机的发展前景十分广阔，又属于国家力推</dt>
+  					<div class="dotted_5"></div>
+  					<dt> &nbsp;</dt>
+  					<dt>南方IT学院的常青专业了解一下</dt>
+  					<dt style="opacity: 0.4;">南方IT学院的老牌专业——软件工程系专业</dt>
+  					<div class="dotted_6"></div>
+  					<dt>&nbsp;</dt>
+  					<dt>关于机器人专业你想知道的都在这里</dt>
+  					<dt style="opacity: 0.4;">未来8年机器人相关人才缺口200万人，其中</dt>
+  				</dl>
+  				</div>
+  				<div class="news_marquee7">
+  				<dl>
+  					<div class="dotted_7"></div><br />
+  					<dt>错过再等一年 你愿意晚一年拿本科学历吗？</dt>
+  					<dt>&nbsp;</dt>
+  					<div class="dotted_8"></div>
+  					<dt> &nbsp;</dt>
+  					<dt>【喜讯】祝贺南方IT学院校友汪洋再入选福布斯榜单</dt>
+  					<dt style="opacity: 0.4;">喜报，南方IT学院2008届校友汪洋再次</dt>
+  					<div class="dotted_9"></div>
+  					<dt>&nbsp;</dt>
+  					<dt>8月芳华莫虚度 正是读书好时节</dt>
+  				</dl>
+  				</div>
+  				<div class="news_marquee8">
+  				<dl>
+  					<div class="dotted_10"></div><br />
+  					<dt>企业揽才势难挡，南方IT学院毕业生遭疯抢</dt>
+  					<dt style="opacity: 0.4;">今年南方IT学院的招聘比往年提前了，原因是</dt>
+  					<div class="dotted_11"></div>
+  					<dt> &nbsp;</dt>
+  					<dt>感恩母校 传承辉煌 校友献给母校二十年生日颂！</dt>
+  					<dt style="opacity: 0.4;">有一种选择叫改变，有一种改变叫成就</dt>
+  					<div class="dotted_12"></div>
+  					<dt>&nbsp;</dt>
+  					<dt>珠海园圈科技有限公司总经理肖波祝愿南方IT</dt>
+  					<dt style="opacity: 0.4;">在南方IT学院迎来建校20周年校庆之际</dt>
+  				</dl>
+  				</div>
+				<div class="news_marquee2">
+  					<div class="news_line2"></div>
+  					<div class="news_line2_2"></div>
+  					 <div class="news_text_3">行业新闻</div>
+  					 <div class="news_text_4">Industry news</div>
+  				</div>
+  				<img src="img1/news_2.jpg" class="news_img2"/><span id="sp2">【推荐】这个拿奖拿到手软的专业你想学</span>
+				<div class="news_marquee3">
+  					<div class="news_line3"></div>
+  					<div class="news_line3_3"></div>
+  					 <div class="news_text_5">媒体聚焦</div>
+  					 <div class="news_text_6">Media Focus</div>
+  					 </div>
+  				<img src="img1/news_3.jpg" class="news_img3"/><span id="sp3">「解惑」谁说女生学IT不如男生？</span>
+				<div class="news_marquee4">
+  					<div class="news_line4"></div>
+  					<div class="news_line4_4"></div>
+  					 <div class="news_text_7">校企合作</div>
+  					 <div class="news_text_8">SE Cooperation</div>
+  					 </div>
+  				<img src="img1/news_4.jpg" class="news_img4"/><span id="sp4">这些南方IT校友企业有你的理想型吗？</span>
+			</div>
+			<div class="star">
+				<span class="text_5">就业明星</span>
+				<div class="line_9"></div><div class="line_10"></div><div class="line_11"></div><div class="line_12"></div>
+  				<div class="text_4">更多就业》》</div>
+  				<div class="img_1"><img src="img1/star_1.jpg" class="star_img1" /></div>
+  				<div class="star_1">
+  					<dl>
+  						<dt style="font-size: 25px;">汪洋</dt>
+  						<dt>职位:CEO</dt>
+  						<dt>就职公司：深圳云麦科技有限公司</dt>
+  						<dt style="opacity: 0.4;">----------------------------------------</dt>
+  						<dt><span style="color: orange;">【实战案例】</span>汪洋，南方IT学院2008届的优秀校友，也是职业教育的典范，剑走偏锋的传奇经历可谓颠覆了中国传统教育理</dt>
+  					</dl>
+  				</div>
+  				<div class="img_2"><img src="img1/star_2.jpg" class="star_img2" /></div>
+  				<div class="star_2">
+  					<dl>
+  						<dt style="font-size: 25px;">卢霄 </dt>
+  						<dt>职位：总经理</dt>
+  						<dt>就职公司：珠海金蝶软件有限公司</dt>
+  						<dt style="opacity: 0.4;">----------------------------------------</dt>
+  						<dt><span style="color: orange;">【实战案例】</span>“不畏浮云遮望眼，只缘身在最高层。”因痴迷游戏一脚跨入IT领域的卢霄，对于这个行业有着卓越的远见和持续</dt>
+  					</dl>
+  				</div>
+  				<div class="img_3"><img src="img1/star_3.jpg" class="star_img3" /></div>
+  				<div class="star_3">
+  					<dl>
+  						<dt style="font-size: 25px;">杨玉峰  </dt>
+  						<dt>职位：副总经理</dt>
+  						<dt>就职公司：珠海园圈科技有限公司</dt>
+  						<dt style="opacity: 0.4;">----------------------------------------</dt>
+  						<dt><span style="color: orange;">【实战案例】</span>杨玉峰，南方IT学院2007届校友代表，不甘于平庸的人生，即使起点低，即使比别人晚入行，依然执着于自己</dt>
+  					</dl>
+  				</div>
+  				<div class="img_4"><img src="img1/star_4.jpg" class="star_img4" /></div>
+  				<div class="star_4">
+  					<dl>
+  						<dt style="font-size: 25px;">陈功湖  </dt>
+  						<dt>职位：研发主任</dt>
+  						<dt>就职公司：珠海经济特区伟思有限公司</dt>
+  						<dt style="opacity: 0.4;">----------------------------------------</dt>
+  						<dt><span style="color: orange;">【实战案例】</span>回首走过的岁月，南方IT学院的校友陈功湖感慨颇多，如今已经是珠海经济特区伟思有限公司研发主任的他十分庆幸那些年求学时选择了“南方”</dt>
+  					</dl>
+  				</div>
+			</div>
+			<div class="basement">
+				<div class="basement_1">
+					<span style="color: white;">快捷链接</span>
+					<div class="class1"><img src="img1/basement_1.png"/><span>成绩查询</span></div>
+					<div class="class2"><img src="img1/basement_2.png"/><span>预定学位</span></div>
+				</div>
+				<div class="basement_2">
+					<span style="color: white;">热门专业</span>
+					<div class="class3">
+						<ul>
+							<li>无人机应用</li>
+							<li>无人机开发</li>
+							<li>机器人集成应用</li>
+							<li>工业机器人开发</li>
+							<li>前端开发</li>
+							<li>Java开发</li>
+							<li>.Net开发</li>
+							<li>Android开发</li>
+							<li>软件测试与运营</li>
+							<li>Php开发</li>
+							<li>Python开发</li>
+							<li>电子商务</li>
+							<li>视觉传达</li>
+							<li>平面设计</li>
+							<li>新媒体运营</li>
+						</ul>
+					</div>
+				</div>
+				<span style="color: white;" class="class4">媒体报道</span>
+				<div class="basement_3">
+					<ul>
+						<li><img src="img1/basement_3.jpg"/></li>
+						<li><img src="img1/basement_4.jpg"/></li>
+						<li><img src="img1/basement_5.jpg"/></li>
+						<li><img src="img1/basement_6.jpg"/></li>
+						<li><img src="img1/basement_7.jpg"/></li>
+						<li><img src="img1/basement_8.jpg"/></li>
+						<li><img src="img1/basement_9.jpg"/></li>
+						<li><img src="img1/basement_10.jpg"/></li>
+						<li><img src="img1/basement_11.jpg"/></li>
+						<li><img src="img1/basement_12.jpg"/></li>
+						<li><img src="img1/basement13.jpg"/></li>
+					</ul>
+				</div>
+				<div class="basement_4">
+					<span style="font-size: 12px; color: white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						免费咨询热线：400-626-8899 服务热线：0756-6811222 0756-6813333<br />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						ICP备案号:粤ICP备10023135号&nbsp;&nbsp;&nbsp;&nbsp; 粤公网安备 44040202000625号 <br />
+						地址：广东省珠海市斗门区白蕉科技园白蕉南路29号 版权所有：广东南方职业培训学院 网站地图 WAP <br />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyRight © 1996-2018 South Vocational College. All Rights Reserved.</span>
+						<img src="img1/police.gif" />
+				</div>
+			</div>
+			<img src="img1/floating1.png" class="floating_1"/>
+			<img src="img1/floating2.png" class="floating_2"/>
+	</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/官网子网页1.css" type="text/css"/>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var t = $('#h1'); //获取到文本域对象
+				t.css("color","#A9A9A9"); //设置文本域的样式
+				t.val("请输入关键字"); //设置默认显示文字
+				var default_value = t.val(); //把默认显示的文字赋给一个变量
+				
+				t.focus(function() {  //当鼠标点击文本域时修改文本域的样式，判断文本域内的文字是否等于默认值，如果等于就把文本域内设空
+					t.css("color","black");
+					if (t.val() == default_value) {
+						t.val('');
+					}
+				});
+ 
+				t.blur(function() { //当文本域失去鼠标焦点时判断文本域中的值是否为空，如果为空就把文本域的值设置为默认显示的文字并修改样式
+					t.css("color","black");
+					if (t.val() == '') {
+						t.val(default_value);
+						t.css("color","#A9A9A9");
+					}
+				}); 	
+				$("#a1").click(function(){
+					$(".news_text5").fadeIn(200);
+					$(".conceal_1").fadeIn(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+					$(".conceal_5").fadeOut(200);
+					$(".conceal_6").fadeOut(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".news_text9").fadeOut(200);
+					$(".news_text10").fadeOut(200);
+				});
+				$("#a2").click(function(){
+					$(".news_text6").fadeIn(200);
+					$(".conceal_2").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+					$(".conceal_5").fadeOut(200);
+					$(".conceal_6").fadeOut(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".news_text9").fadeOut(200);
+					$(".news_text10").fadeOut(200);
+				});
+				$("#a3").click(function(){
+					$(".news_text7").fadeIn(200);
+					$(".conceal_3").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+					$(".conceal_5").fadeOut(200);
+					$(".conceal_6").fadeOut(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".news_text9").fadeOut(200);
+					$(".news_text10").fadeOut(200);
+				});
+				$("#a4").click(function(){
+					$(".news_text8").fadeIn(200);
+					$(".conceal_4").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+					$(".conceal_5").fadeOut(200);
+					$(".conceal_6").fadeOut(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".news_text9").fadeOut(200);
+					$(".news_text10").fadeOut(200);
+				});
+				$("#a5").click(function(){
+					$(".news_text9").fadeIn(200);
+					$(".conceal_5").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+					$(".conceal_6").fadeOut(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".news_text10").fadeOut(200);
+				});
+				$("#a6").click(function(){
+					$(".news_text10").fadeIn(200);
+					$(".conceal_6").fadeIn(200);
+					$(".conceal_1").fadeOut(200);
+					$(".conceal_2").fadeOut(200);
+					$(".conceal_3").fadeOut(200);
+					$(".conceal_4").fadeOut(200);
+					$(".conceal_5").fadeOut(200);
+					$(".news_text5").fadeOut(200);
+					$(".news_text6").fadeOut(200);
+					$(".news_text7").fadeOut(200);
+					$(".news_text8").fadeOut(200);
+					$(".news_text9").fadeOut(200);
+				});
+			});
+		</script>
+	</head>
+	<body style="margin: 0;">
+		<div>
+		<div class="roof">
+			<img src="img/1.gif" class="roof_img1"/>
+			<img src="img/布洛妮娅.gif"  class="navigation_img1"/>
+			<span style="color: #19AAF5;" class="roof_text1">为世界上<br />&nbsp;&nbsp;&nbsp;&nbsp;所有的美好而战</span>
+			<ul class="roof_text2">
+				<a href="1网页制作登录.html"><li>用户登录</li></a>
+				<a href="1网页制作注册.html"><li>账号注册</li></a>
+				<li style="color: red;">米哈游游戏目录
+				</li>
+				<li>安卓充值</li>
+			</ul>
+		</div>
+		<div class="news">
+			<img  src="img/线条1.PNG" class="news_img1"/>
+			<img  src="img/线条2.PNG" class="news_img2"/>
+			<span class="news_text1">作战资讯</span>
+			<ul class="news_text2">
+				<li id="a1"><span>最新</span></li>
+				<li id="a2"><span>新闻</span></li>
+				<li id="a3"><span>公告</span></li>
+				<li id="a4"><span>活动</span></li>
+				<li id="a5"><span>攻略</span></li>
+				<li id="a6"><span>帮助</span></li>
+			</ul>
+			<input type="text" value="" class="news_text3" style="width: 150px; height: 20px;" id="h1"/>
+			<img src="img/搜索图标.PNG" class="news_img3" />
+			<div class="news_text4"></div>
+			<div class="news_text5"></div><div class="news_text6"></div><div class="news_text7"></div><div class="news_text8"></div>
+			<div class="news_text9"></div><div class="news_text10"></div>
+			<div class="conceal_1">
+					<ul class="ensconce_2">
+						<li>10-18 游戏内就可以联系客服娘啦~
+						 <ul>
+						 	<li>爱酱信箱新功能全服上线啦！不知道有没有细心的舰长，已经发现了爱酱信箱的新功能呢？</li>
+						 </ul>
+						</li>
+						<li>10-17 万圣节出击！琪亚娜勇者大冒险即将开启！
+							<ul>
+								<li>每一年的这个时候，圣芙蕾雅学院都会发生各种奇怪的事情。鬼怪在夜晚开始游荡，</li>
+							</ul>
+						</li>
+						<li>10-11 下期精准目标：虚无之刃、米开朗基罗
+						<ul>
+							<li>本次精准补给A为舰长带来太刀角色适用装备「虚无之刃」与文艺复兴套装「米开朗基罗」。</li>
+						</ul>
+						</li>
+						<li>10-11 封号名单（2018年10月11日）
+							<ul>
+								<li>爱酱曾多次发布公告说明，《崩坏3》严禁使用任何外挂、第三方工具，严禁以其他任何不正当的方式进游戏</li>
+							</ul>
+						</li>
+						<li>10-10 爱酱加入周年作战！
+							<ul>
+								<li>★★★★★爱酱加入作战★★★★★10月11日4:00开始，舰长可以通过爱酱生日拼图活动获取重燃周年专属道具</li>
+							</ul>
+						</li>
+						<li>10-10 关于近期渠道返利活动的说明
+							<ul>
+								<li>各位舰长好~近期，爱酱收到舰长举报，有渠道开启了充值返利的活动。制作组在第一时间与渠道方进行</li>
+							</ul>
+						</li>
+					</ul>
+					<img src="img/1.png"  class="ensconce_img1"/>
+					<img src="img/2.png"  class="ensconce_img2"/>
+					<img src="img/3.png"  class="ensconce_img3"/>
+					<img src="img/4.png"  class="ensconce_img4"/>
+					<img src="img/5.png"  class="ensconce_img5"/>
+					<img src="img/6.png"  class="ensconce_img6"/>
+					<a href="#"><img src="img/箭头上.PNG" class="ensconce_img7" /></a>
+					<span class="ensconce_text1">1/20</span>
+			</div>
+			<div class="conceal_2">
+					<ul class="ensconce_3">
+						<li>10-18 本期精准目标:仿犹大·血之拥抱、德古拉
+						 <ul>
+						 	<li>本次精准补给A为舰长带来处刑装·紫苑&月下初拥适合装备[仿犹大·血之拥抱]与吸血鬼亲王套装[德古拉]</li>
+						 </ul>
+						</li>
+						<li>10-18万圣节专属补给开启！
+							<ul>
+								<li>万圣降临，鬼怪出行。在这充斥着南瓜、鬼火和糖果的节日里，一场突如其来的冒险正等待着大家……</li>
+							</ul>
+						</li>
+						<li>10-18 游戏内就可以联系客服娘啦~
+						<ul>
+							<li>爱酱信箱新功能全服上线啦！不知道有没有细心的舰长，已经发现了爱酱信箱的新功能呢？</li>
+						</ul>
+						</li>
+						<li>10-17 万圣节出击！琪亚娜勇者大冒险即将开启！
+							<ul>
+								<li>每一年的这个时候，圣芙蕾雅学院都会发生各种奇怪的事情。鬼怪在夜晚开始游荡，路上也突然亮起了南瓜灯……什么？</li>
+							</ul>
+						</li>
+						<li>10-11 下期精准目标：虚无之刃、米开朗基罗
+							<ul>
+								<li>本次精准补给A为舰长带来太刀角色适用装备「虚无之刃」与文艺复兴套装「米开朗基罗」。</li>
+							</ul>
+						</li>
+						<li>10-10 爱酱加入周年作战！
+							<ul>
+								<li>★★★★★爱酱加入作战★★★★★10月11日4:00开始，舰长可以通过爱酱生日拼图活动获取重燃周年专属道具</li>
+							</ul>
+						</li>
+					</ul>
+					<img src="img/3.png"  class="ensconce_img13"/>
+					<img src="img/7.png"  class="ensconce_img8"/>
+					<img src="img/1.png"  class="ensconce_img9"/>
+					<img src="img/8.png"  class="ensconce_img10"/>
+					<img src="img/3.png"  class="ensconce_img11"/>
+					<img src="img/5.png"  class="ensconce_img12"/>
+					<a href="#"><img src="img/箭头上.PNG" class="ensconce_img34" /></a>
+					<span class="ensconce_text5">1/20</span>
+			</div>
+			<div class="conceal_3">
+					<ul class="ensconce_4">
+						<li>10-18 补给概率与补给结果公示
+						 <ul>
+						 	<li>4星武器5.704%  4星圣痕8.556% 3星武器10.992% 3星圣痕32.977%</li>
+						 </ul>
+						</li>
+						<li>10-11 封号名单（2018年10月11日）
+							<ul>
+								<li>爱酱曾多次发布公告说明，《崩坏3》严禁使用任何外挂、第三方工具，严禁以其他任何不正当的方式进游戏</li>
+							</ul>
+						</li>
+						<li>10-10 关于近期渠道返利活动的说明
+						<ul>
+							<li>近期，爱酱收到舰长举报，有渠道开启了充值返利的活动。制作组在第一时间与渠道方进行了沟通，让其即刻关闭了活动。</li>
+						</ul>
+						</li>
+						<li>10-4 封禁名单（2018年10月3日）
+							<ul>
+								<li>2018年10月3日使用外挂封禁名单，共计4428名。</li>
+							</ul>
+						</li>
+						<li>09-27 「周年挑战赛」违规封禁名单（2018年9月27日）
+							<ul>
+								<li>休伯利安号一直在为营造良好的游戏环境而努力，坚持对破坏游戏公平的行为进行严厉打击，并且在不断升级监控和侦测外挂的技术。</li>
+							</ul>
+						</li>
+						<li>09-26 封号名单（2018年9月26日）
+							<ul>
+								<li>爱酱曾多次发布公告说明，《崩坏3》严禁使用任何外挂、第三方工具，严禁以其他任何不正当的方式进游戏</li>
+							</ul>
+						</li>
+					</ul>
+					<img src="img/9.png"  class="ensconce_img14"/>
+					<img src="img/10.png"  class="ensconce_img15"/>
+					<img src="img/6.png"  class="ensconce_img16"/>
+					<img src="img/10.png"  class="ensconce_img17"/>
+					<img src="img/10.png"  class="ensconce_img18"/>
+					<img src="img/10.png"  class="ensconce_img19"/>
+					<a href="#"><img src="img/箭头上.PNG" class="ensconce_img20" /></a>
+					<span class="ensconce_text2">1/20</span>
+			</div>
+			<div class="conceal_4">
+					<ul class="ensconce_5">
+						<li>07-19 新手福利加码 冲级就送八重樱
+						 <ul>
+						 	<li>新手福利加码 冲级就送八重樱</li>
+						 </ul>
+						</li>
+						<li>02-17 考试祭 | 迦尼萨的再袭
+							<ul>
+								<li>考试祭 | 迦尼萨的再袭</li>
+							</ul>
+						</li>
+						<li>2016-12-22 圣诞小镇系列任务活动预告
+						<ul>
+							<li>圣诞小镇系列任务活动预告</li>
+						</ul>
+						</li>
+						<li>2016-08-19 预登录活动奖励确认中
+							<ul>
+								<li>预登录活动开启，限定福利绝赞放送中！</li>
+							</ul>
+						</li>
+						<li>07-04 《崩坏AI娘爱酱绝对不会告诉玩家的事实》事前条漫连载中
+							<ul>
+								<li>休伯利安号战舰AI娘，第一人气偶像爱酱，竟然是使得游戏迟迟不能公测的幕后黑手？！</li>
+							</ul>
+						</li>
+					</ul>
+					<img src="img/11.png"  class="ensconce_img21"/>
+					<img src="img/12.png"  class="ensconce_img22"/>
+					<img src="img/13.png"  class="ensconce_img23"/>
+					<img src="img/14.png"  class="ensconce_img24"/>
+					<img src="img/15.png"  class="ensconce_img25"/>
+					<a href="#"><img src="img/箭头上.PNG" class="ensconce_img26" /></a>
+					<span class="ensconce_text3">没有更多了</span>
+			</div>
+			<div class="conceal_5">
+					<ul class="ensconce_6">
+						<li>09-13 爱酱的英魂殿 | 「佐罗」
+						 <ul>
+						 	<li>欢迎收看《爱酱的英魂殿》栏目，爱酱会在这里为舰长介绍圣痕的使用心得及搭配建议！</li>
+						 </ul>
+						</li>
+						<li>09-13 爱酱的军械库 | 「血手圣徒」
+							<ul>
+								<li>4★双枪「血手圣徒」使用指南</li>
+							</ul>
+						</li>
+						<li>08-10 爱酱军械库 | 「赫朗格尼尔」
+						<ul>
+							<li>4★大剑「赫朗格尼尔」使用攻略</li>
+						</ul>
+						</li>
+						<li>08-03 爱酱的军械库 | 「空无之钥」
+							<ul>
+								<li>今天要介绍的是2.5版本登场的新双枪武器——「空无之钥」</li>
+							</ul>
+						</li>
+						<li>08-02 爱酱的英魂殿 | 「西琳·升华」
+							<ul>
+								<li>今天为舰长介绍的是将于2.5版本登场的新圣痕——崩坏女王套装：「西琳·升华」。</li>
+							</ul>
+						</li>
+						<li>05-25 爱酱的英魂殿 | 「叶采章」
+							<ul>
+								<li>4★圣痕「叶采章」使用攻略</li>
+							</ul>
+						</li>
+					</ul>
+					<img src="img/16.png"  class="ensconce_img27"/>
+					<img src="img/17.png"  class="ensconce_img28"/>
+					<img src="img/18.png"  class="ensconce_img29"/>
+					<img src="img/19.png"  class="ensconce_img30"/>
+					<img src="img/20.png"  class="ensconce_img31"/>
+					<img src="img/21.png"  class="ensconce_img32"/>
+					<a href="#"><img src="img/箭头上.PNG" class="ensconce_img33" /></a>
+					<span class="ensconce_text4">1/20</span>
+			</div>
+			<div class="conceal_6">
+				<span>敬<br />请<br />期<br />待</span>
+			</div>
+			<div class="ensconce_line1"></div><div class="ensconce_line2"></div><div class="ensconce_line3"></div><div class="ensconce_line4"></div><div class="ensconce_line5"></div><br />
+			<div class="news_text11">
+				<ul>
+				<li>▍健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</li><br />
+				<li>▍用户协议： 米哈游游戏使用许可及服务协议   米哈游用户个人信息及隐私保护政策   交易纠纷处理   家长监护工程   防沉迷系统   自律公约</li><br />
+				<li>▍适龄提示： 本游戏适合17岁（含）以上玩家娱乐</li><br />
+				<li>沪ICP备14042301号-2 沪网文〔2017〕8193-607号 文网游备字〔2016〕Ｍ-CSG 1244 号</li><br />
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;沪公网安备31010402001116号</li><br />
+				<li>2014-2018 All Rights Reserved 米哈游科技（上海） 有限公司版权所有 </li><br />
+				<li>地址：上海市徐汇区宜山路700号C4栋5层   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前台电话：86-021-60331122. </li><br />
+				<li>官方客服电话：021-34203305 （工作时间：每天10点 - 20点）.</li><br />
+				<li>投诉电话：021-34203135  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：tousu@mihoyo.com</li>
+			</ul>
+			<img src="img1/police.gif" class="top_img1" />
+			<img src="img/police2.png" class="top_img2" />
+			<span class="top_text1"><a href="">联系方式  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				加入我们  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				免责条款  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a></span>
+			</div>
+		</div>
+		<ul class="navigation_text1">
+				<a href="1网页首页.html"><li><span>&nbsp;&nbsp;&nbsp;首页</span></li></a>
+				<li style="background: #CCCCCC;"><span><a href="#">作战资讯</a></span></li>
+				<li><span><a href="#">游戏特色</a></span></li>
+				<a href="1网页子网页2.html"><li><span>下载中心</span></li></a>
+				<li><span><a href="#">周边商城</a></span></li>
+				<li><span><a href="#">我的账户</a></span></li>
+			</ul>
+		</div>
+	</body>
+</html>

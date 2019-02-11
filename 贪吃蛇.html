@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				background-color: #CCCCCC;
+			}
+			.area{
+				position: absolute;
+				width: 810px;
+				height: 600px;
+				border: 3px solid blue; 
+			}
+			#snake{
+				position: absolute;
+				width: 800px;
+				height: 600px;
+			}
+			#snake li{
+				list-style: none;
+				background: #ffc400;
+				float: left;
+				width: 14px;
+				height: 14px;
+				border-right: 1px solid white;
+				position: absolute;
+			}
+			.food{
+				position:absolute;
+				float: left;
+				width: 14px;
+				height: 14px;
+				background: #0000FF;
+			}
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){ 
+				var snakeItem = [[200,100],[215,100],[230,100]];
+				$("#snake li").each(function(i){
+					$(this).css({"left":snakeItem[i][0],"top":snakeItem[i][1]});
+				});
+				var snake = {
+					snake_x:-14,
+					snake_y:0,
+					sleep:1000,
+					item:null 
+				}
+				$(document).keydown(function(e){
+					switch(e.keyCode){
+						//左键
+						case 37:
+						if(snake.snake_y != 0){
+						updatexy(-15,0)
+						}
+							back;
+						//上键
+						case 38:
+						if(snake.snake_x != 0){
+						updatexy(0,-15)
+						}
+					
+							back;
+						//右键
+						case 39:
+						if(snake.snake_y != 0){
+						updatexy(15,0)
+						}
+							back;
+						//下键
+						case 40:
+							if(snake.snake_x != 0){
+						updatexy(0,15)
+						}
+							back;
+					}
+				});
+				function updatexy(x,y){
+						snake.snake_x = x;
+						snake.snake_y = y;
+				}
+				snake.item = setInterval(function(){
+					var food_x = $(".food").position().left;
+					var food_y = $(".food").position().top;
+					
+					var active_x = $("#snake li").eq(0).position().left+snake.snake_x;
+					var active_y = $("#snake li").eq(0).position().top+snake.snake_y;
+					$("#snake li").css("background","#FFC400"); 
+					$("#snake").prepend("<li></li>");
+					$("#snake li").eq(0).css({"left":active_x,"top":active_y,"background":"red"});
+					$("#snake li:last").remove();
+//					if((active_x - food_x <= 5 || active_x - food_x) >= -5 && (active_y - food_y <=10 || active_y - food_y >=-10)){
+//						foods();
+//						$("#snake").append("<li></li>");
+//					}
+					//foods()
+				},snake.sleep);
+				foods()
+			//随机出现食物
+			//随机出现的x 坐标为1-799
+			//随机出现的y 坐标为1-599
+			function foods(){
+				var foodx = parseInt((Math.random()*54+1));
+				var foody = parseInt((Math.random()*40+1));
+				$(".food").css({"left":foodx*15+2,"top":foody*15+2});
+			}
+			}); 
+		</script>
+	</head>
+	<body>
+		<div class="area">
+			<ul id="snake">
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<span class="food"></span>
+		</div>
+	</body>
+</html>

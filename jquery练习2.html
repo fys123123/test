@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		
+			.cun{
+				font-size: 14px;
+				color: white;
+				
+			}
+			.cun1{
+				font-size: 20px;
+			}
+			.cun2{
+				line-height: 24px;
+			}
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">			
+			$(function(){
+				$('#sp1').click(function(){
+				$('li').toggle();//这个方法意思是 如果列表时隐藏的 单击后就显示 如果是显示的 单击后就隐藏
+				$('.txt1').css('background-color','blue');
+				$('.txt1').addClass('cun');
+				$('.txt2').addClass('cun1');
+				$('ul > li').addClass('cun2');
+			});
+			});
+		</script>
+	</head>
+	<body>
+			<ul><span id="sp1"><h1>新手指南</h1></span>
+				<li><div class="txt1">会员注册</div></li>
+				<li class="txt2">订阅更新</li>
+				<li>用户协定</li>
+				<li>常见问题</li>
+</ul>
+	</body>
+</html>

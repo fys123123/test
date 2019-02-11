@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.cun{
+				background-color: #FF99CC;
+			}
+		
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("tr:even").css("background","#ccc");
+				$(".t2").addClass("cun");
+				$("#pm").click(function(){
+					$(".b1").toggle();
+				})
+				$("#pm1").click(function(){
+					$(".b1").toggle();
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<span style="color: gray; font-size: 20px;">乐淘,发现更多生活,<span style="color: red;">快乐</span>就在你身边</span><br/>
+		<span style="color: green;">近期热门.....<span style="float: right; " id="pm1">(更多)</span></span>
+		
+		<font>
+			<table width="500" border="0" align="" cellpadding="5">
+			<tr>
+				<td>言语之庭</td>
+			</tr>
+			<tr>
+				<td>斯托克</td>
+			</tr>
+			<tr>
+				<td class="t2">宿醉</td>
+			</tr>
+			<tr>
+				<td>巨人擒手杰克</td>
+			</tr>
+			<tr>
+				<td>副作用</td>
+			</tr>
+			<tr style="display:none" class="b1">
+				<td>血肉之躯</td>
+			</tr>
+			<tr style="display:none" class="b1">
+				<td>7号房的礼物</td>
+			</tr>
+			<tr style="display:none" class="b1">
+				<td>惊声尖叫</td>
+			</tr>
+			</table>
+			<span style="color: red;" id="pm">更多排名</span>
+			
+		</font>
+	</body>
+</html>

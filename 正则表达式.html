@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function test(){
+				//匹配手机号
+				/*var exp = /^1[345789]\d{9}$/;
+				var str = "13638461499";
+				document.write(exp.test(str));*/
+				//匹配邮箱验证
+				var reg =/^[A-Za-z0-9]+@[A-Za-z0-9]+\.(cn|com)$/;
+				var email = "472126128@qq.com";
+				document.write(reg.test(email));
+			}
+		</script>
+	</head>
+	<body onload="test()">
+		
+	</body>
+</html>

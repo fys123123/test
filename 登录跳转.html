@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window对象的属性测试</title>
+<script type="text/javascript">
+	function denglu(){
+		var name = document.getElementById("name").value;
+		var mima = document.getElementById("mima").value;
+		if(name != "zhangsan" || mima != "123456"){
+			alert("用户名或密码输入错误！");
+		}
+		else{
+			window.location.replace("登录跳转2.html");			
+		}
+	}
+</script>
+</head>
+<body>
+	用户名：<input type="text" id="name" value="zhangsan"><br/>
+	密码：<input type="password" id="mima" value="123456"><br/>
+	<input type="button" value="登录" onclick="denglu()">
+</body>
+</html>
